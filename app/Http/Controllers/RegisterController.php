@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserInventory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -29,6 +30,11 @@ class RegisterController extends Controller
             'email'    => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        $userInventory = UserInventory::create([
+            'user_id' => $user->id,
+            'inventory_item_id' => 1,
+            'quantity' => 2,
+        ]);
 
         // Loguear al usuario recién creado
         auth()->login($user);
@@ -37,3 +43,5 @@ class RegisterController extends Controller
         return redirect('/');
     }
 }
+
+

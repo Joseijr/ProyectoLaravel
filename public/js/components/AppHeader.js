@@ -11,6 +11,7 @@ app.component('app-header', {
         logoutUrl: String,
         homeUrl: String,
         gameUrl: String,
+        contactUrl: String,
         userName: { type: String, default: '' },
     },
 
@@ -38,7 +39,7 @@ app.component('app-header', {
             <a v-if="!isLoggedIn" class="white-color secondary-hover" :href="registerUrl">Sign In</a>
             <a v-if="isLoggedIn" class="white-color secondary-hover" :href="logoutUrl">Log out</a>
 
-            <a class="white-color secondary-hover" href="contact.html">Contact</a>
+            <a class="white-color secondary-hover" :href="contactUrl">Contact</a>
         </nav>
 
         <button v-if="ancho <= 779" @click="toggleMenu" class="menu-toggle" id="menu-toggle">

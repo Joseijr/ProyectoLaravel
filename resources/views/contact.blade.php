@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>contact</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- App Header Component (reutilizado de index) -->
+          <app-header :t="t" 
+        :lang="lang" 
+        :ancho="ancho" 
+        :menu="menu" 
+        :is-logged-in="{{ auth()->check() ? 'true' : 'false' }}"
+        user-name="{{ auth()->check() ? auth()->user()->name : '' }}"
+        home-url="{{ route('index.form') }}"
+        game-url="{{ route('game.form') }}"    
+        login-url="{{ route('login.form') }}"
+        register-url="{{ route('user.create') }}"
+        logout-url="{{ route('logout') }}"
+        contact-url="{{ route('contact.form') }}"
+        @change-language="changeLanguage"
+        @toggle-menu="showHam">
+        </app-header>
+
+        <!-- Contact Section Component -->
+        <contact-section :t="t"></contact-section>
+    </div>
+
+    <footer class="primary-bg">
+        <p class="white-color mt-m">Mushroom's Garden - All rights reserved</p>
+    </footer>
+
+    <!-- Main app -->
+    <script src="js/main.js"></script>
+    <!-- Components -->
+    <script src="js/components/appHeader.js"></script>
+    <script src="js/components/contactSection.js"></script>
+
+    <script>const mountedApp = app.mount("#app");</script>
+</body>
+
+
+
+</html>

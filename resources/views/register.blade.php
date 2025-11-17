@@ -24,6 +24,7 @@
         login-url="{{ route('login.form') }}"
         register-url="{{ route('user.create') }}"
         logout-url="{{ route('logout') }}"
+        contact-url="{{ route('contact.form') }}"
         @change-language="changeLanguage"
         @toggle-menu="showHam">
         </app-header>

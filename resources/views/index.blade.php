@@ -1,70 +1,4 @@
-<!-- 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Plantas</title>
-    <style>
-       body {
-         background: #d7d7d7;
-         font-family: Arial, sans-serif;
-         margin: 30px;
-       }
 
-       h1 {
-           text-align: center;
-           margin-bottom: 25px;
-           color: #333;
-       }
-
-       h3 {
-           color: #2a7a2a;
-           margin-bottom: 10px;
-       }
-
-       .plant-card {
-           background: #f5f5f5;
-           padding: 15px;
-           border-radius: 8px;
-           margin-bottom: 20px;
-       }
-    </style>
-</head>
-<body>
-
-    <h1>Lista de Plantas</h1>
-
-@if(auth()->check())
-    <p>Bienvenido, {{ auth()->user()->name }}</p>
-    <a href="{{ route('logout') }}" class="extra-color underline link cursor">
-        Cerrar sesión
-    </a>
-@else
-    <a href="{{ route('login.form') }}" class="yellow-color underline link cursor">
-        Inicia sesión
-    </a>
-    <br>
-    <a href="{{ route('user.create') }}" class="extra-color underline link cursor">
-        Regístrate
-    </a>
-@endif
-
-
-
-    @foreach ($plants as $plant)
-        <div class="plant-card">
-            <h3>{{ $plant->name }}</h3>
-            <p><strong>Horas de crecimiento:</strong> {{ $plant->growth_hours }}</p>
-            <p><strong>Agua necesaria por día:</strong> {{ $plant->water_need_per_day }}</p>
-            <p><strong>Efecto del fertilizante:</strong> {{ $plant->fertilizer_effect }}</p>
-            <p><strong>Precio:</strong> ${{ $plant->price }}</p>
-            <p><strong>Descripción:</strong> {{ $plant->description }}</p>
-        </div>
-    @endforeach
-
-</body>
-</html> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -95,6 +29,7 @@
         game-url="{{ route('game.form') }}"
         login-url="{{ route('login.form') }}"
         register-url="{{ route('user.create') }}"
+        contact-url="{{ route('contact.form') }}"
         logout-url="{{ route('logout') }}"
         @change-language="changeLanguage"
         @toggle-menu="showHam">
@@ -107,7 +42,9 @@
         <section-one :t="t"></section-one>
 
         <!-- segunda sección -->
-        <section-two :t="t"></section-two>
+        <section-two :t="t"
+         login-url="{{ route('login.form') }}"
+         ></section-two>
 
         <!-- carrousel -->
         <carousel-section :i="i" 
