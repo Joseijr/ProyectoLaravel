@@ -1,0 +1,98 @@
+@layer main {
+    footer {
+        display: flex;
+        
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        justify-items: center;
+        bottom: 0;
+        min-height: 5rem;
+        max-height: 10rem;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        
+    }
+
+    .login-back {
+        text-align: center;
+        background: linear-gradient(hsla(0, 0%, 0%, 0.4), hsla(0, 0%, 0%, 0.4)), url('../../assets/Illustrationproyecto1.jpg') center/cover no-repeat;
+    }
+
+    .signin-back {
+        text-align: center;
+        background: linear-gradient(hsla(0, 0%, 0%, 0.4), hsla(0, 0%, 0%, 0.4)), url('../../assets/Illustrationproyecto2.jpg') center/cover no-repeat;
+        flex: 1;
+    }
+
+    .contact-back {
+        text-align: center;
+        background: linear-gradient(hsla(0, 0%, 0%, 0.4), hsla(0, 0%, 0%, 0.4)), url('../../assets/Illustrationproyecto3.jpg') center/cover no-repeat;
+        
+    }
+
+    .language-selector {
+        align-items: center;
+        gap: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .textCard {
+        max-width: 50rem;
+    }
+
+    .card {
+        display: flex;
+        overflow: hidden;
+
+        border-radius: 0.6px;
+    }
+
+    .card img {
+        min-width: 300px;
+        min-height: 100px;
+
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .display-flex {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .hamMenu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        box-shadow:
+            -0.1em 0 0.4em var(--black);
+    }
+
+    .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+}

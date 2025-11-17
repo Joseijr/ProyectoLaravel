@@ -1,0 +1,138 @@
+@layer buttons {
+    .btn-account {
+        padding: 12px 30px;
+        border-radius: 17px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        ;
+    }
+
+    .btn-play-container {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .btn-play {
+        display: inline-block;
+        padding: 12px 40px;
+        border-radius: 34px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .language-selector button {
+        background: transparent;
+        border: 1px solid transparent;
+        color: var(--white);
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        font-size: var(--fs-s);
+        padding: 0.3rem 0.6rem;
+        min-width: 40px;
+        text-align: center;
+    }
+
+    .language-selector button.active {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: var(--white);
+    }
+
+    .language-selector button:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-arrows {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+        padding: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+
+    .action-btn.active {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+    }
+
+    /*boton para cerrar la interfaz del libro*/
+    .close-btn {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, .25);
+        color: white;
+        border-radius: 6px;
+        padding: .25rem .5rem;
+        cursor: pointer;
+    }
+
+    .market-buy-btn {
+        padding: .4rem .7rem;
+        background: var(--secondary);
+        border: 1px solid var(--secondary);
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: .75rem;
+    }
+
+    .market-buy-btn:hover {
+        background: #fff;
+        color: var(--secondary);
+    }
+
+    .market-buy-btn:disabled {
+        opacity: .6;
+        cursor: not-allowed;
+    }
+
+    .action-btn {
+        width: 50px;
+        height: 50px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s, filter 0.2s;
+        padding: 0;
+        position: relative;
+    }
+
+    /*efectos en los botones de acciones de la barra lateral,vaya,lo que le da ese efecto de que se agrandan y el filtrito blanco.*/
+
+    .action-btn:hover {
+        transform: scale(1.15);
+        filter: brightness(1.2);
+    }
+
+    .action-btn:active {
+        transform: scale(0.9);
+    }
+
+    /* jijij los iconos*/
+
+    .action-icon-img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        pointer: cursor;
+    }
+
+
+
+}
