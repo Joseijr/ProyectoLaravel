@@ -32,7 +32,12 @@ class RegisterController extends Controller
         ]);
         $userInventory = UserInventory::create([
             'user_id' => $user->id,
-            'inventory_item_id' => 1,
+            'inventory_item_id' => 8,
+            'quantity' => 2,
+        ]);
+        $userInventory = UserInventory::create([
+            'user_id' => $user->id,
+            'inventory_item_id' => 2,
             'quantity' => 2,
         ]);
 

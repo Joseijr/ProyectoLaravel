@@ -34,7 +34,7 @@ app.component('app-header', {
 
         <nav class="text-l bold" v-if="ancho >= 780">
             <a class="white-color secondary-hover" :href="homeUrl">Home</a>
-            <a class="white-color secondary-hover" :href="gameUrl">Game</a>
+            <a v-if="isLoggedIn" class="white-color secondary-hover" :href="gameUrl">Game</a>
             <a v-if="!isLoggedIn" class="white-color secondary-hover" :href="loginUrl">Login</a>
             <a v-if="!isLoggedIn" class="white-color secondary-hover" :href="registerUrl">Sign In</a>
             <a v-if="isLoggedIn" class="white-color secondary-hover" :href="logoutUrl">Log out</a>
@@ -51,11 +51,13 @@ app.component('app-header', {
                 ☰
             </button>
             <nav class="text-l bold">
-                <a class="white-color secondary-hover" href="index.html">Home</a>
-                <a class="white-color secondary-hover" href="game.html">Game</a>
-                <a class="white-color secondary-hover" href="login.html">Login</a>
-                <a class="white-color secondary-hover" href="signin.html">Sign In</a>
-                <a class="white-color secondary-hover" href="contact.html">Contact</a>
+            <a class="white-color secondary-hover" :href="homeUrl">Home</a>
+            <a v-if="isLoggedIn" class="white-color secondary-hover" :href="gameUrl">Game</a>
+            <a v-if="!isLoggedIn" class="white-color secondary-hover" :href="loginUrl">Login</a>
+            <a v-if="!isLoggedIn" class="white-color secondary-hover" :href="registerUrl">Sign In</a>
+            <a v-if="isLoggedIn" class="white-color secondary-hover" :href="logoutUrl">Log out</a>
+
+            <a class="white-color secondary-hover" :href="contactUrl">Contact</a>
             </nav>
         </div>
     </header>

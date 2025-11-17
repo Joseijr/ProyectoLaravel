@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
 class Plant extends Model
 {
     protected $fillable = [
@@ -12,6 +11,12 @@ class Plant extends Model
         'water_need_per_day',
         'fertilizer_effect',
         'price',
-        'description'
+        'description',
+        'image_url'
     ];
+
+    public function inventories()
+    {
+        return $this->hasMany(UserInventory::class, 'inventory_item_id');
+    }
 }

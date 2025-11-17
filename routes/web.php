@@ -32,6 +32,10 @@ Route::get('/contact', [ContactController::class, 'contact'])->name('contact.for
 Route::get('/register', [RegisterController::class, 'create'])->name('user.create');
 Route::post('/register', [RegisterController::class, 'store'])->name('user.store');
 
+Route::get('/inventory', [InventoryController::class, 'getUserInventory'])
+    ->middleware('auth');
+
+
 
 
 

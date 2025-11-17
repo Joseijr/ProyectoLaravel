@@ -14,13 +14,10 @@ class InventoryItemCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        //
         $categories = [
-            ['name' => 'Fertilizers & Soil Enhancers'],
-            ['name' => 'Tools & Equipment'],
-            ['name' => 'Technology & Automation'],
-            ['name' => 'Improved & Special Seeds'],
-            ['name' => 'Infrastructure & Utility Upgrades'],
+            ['name' => 'Seeds'],
+            ['name' => 'Tools'],
+            ['name' => 'Fertilizer'],
         ];
 
         foreach ($categories as $category) {

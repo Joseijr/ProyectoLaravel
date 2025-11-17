@@ -12,7 +12,8 @@ app.component('game-main', {
     deniedRight: { type: Array, required: true },
     cropsLeft: { type: Array, required: true },
     cropsRight: { type: Array, required: true },
-    marketItems: { type: Array, required: true }
+    marketItems: { type: Array, required: true },
+    inven: { type: Array, required: true },
   },
 
   methods: {
@@ -69,17 +70,21 @@ app.component('game-main', {
             <img src="assets/bolsabase.png" alt="Inventario" class="action-icon-img">
           </button>
 
-          <div v-if="inventoryOpen" class="inventory-dropdown">
-            <div v-for="seed in seeds"
-                :key="seed.id"
-                class="inventory-item"
-                :class="{ selected: selectedSeed && selectedSeed.id === seed.id }"
-                @click="handleSelectSeed(seed)">
-              <img :src="seed.image" :alt="seed.name" class="seed-icon">
-              <span class="seed-quantity">{{ seed.quantity }}</span>
-            </div>
-          </div>
-        </div>
+      <div v-if="inventoryOpen" class="inventory-dropdown">
+<div v-for="seed in seeds"
+     :key="seed.id"
+     class="inventory-item"
+     :class="{ selected: selectedSeed && selectedSeed.id === seed.id }"
+     @click="handleSelectSeed(seed)">
+     <span class="seed-quantity">{{ seed.quantity }}</span>
+
+  <img :src="seed.image_url" class="seed-icon">
+
+</div>
+
+</div>
+
+
       </aside>
     </section>
 

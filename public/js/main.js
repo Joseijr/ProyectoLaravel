@@ -36,7 +36,7 @@ const app = Vue.createApp({
                 price: 3,
                 quantity: 0
             },
-            coins: 15,
+            coins: 75,
 
             selectedSeed: null,
 

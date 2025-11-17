@@ -2,7 +2,9 @@
 app.component('section-two', {
 
     props: {
-        loginUrl: { type: String, required: true }
+        loginUrl: { type: String, required: true },
+        gameUrl: { type: String, required: true },
+        isLoggedIn: { type: Boolean, required: true }
     },
     template: /*html*/`
     <section class="secondary-bg">
@@ -17,7 +19,9 @@ app.component('section-two', {
                 </p>
                 <div class="btn-play-container ">
                 <div >
-                    <a class="btn-play blue-bg white-color text-xl black-hover" :href="loginUrl">Game</a>
+
+                    <a v-if="!isLoggedIn"class="btn-play blue-bg white-color text-xl black-hover" :href="loginUrl">Play Now!</a>
+                    <a v-if="isLoggedIn"class="btn-play blue-bg white-color text-xl black-hover" :href="gameUrl">Play Now!</a>
                 </div>
             </div>
         </div>

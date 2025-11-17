@@ -44,6 +44,8 @@
         <!-- segunda sección -->
         <section-two :t="t"
          login-url="{{ route('login.form') }}"
+         game-url="{{ route('game.form') }}"
+         :is-logged-in="{{ auth()->check() ? 'true' : 'false' }}"
          ></section-two>
 
         <!-- carrousel -->
