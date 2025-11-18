@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\InventoryController;
 
 
 Route::get('/', function () {
@@ -34,6 +35,12 @@ Route::post('/register', [RegisterController::class, 'store'])->name('user.store
 
 Route::get('/inventory', [InventoryController::class, 'getUserInventory'])
     ->middleware('auth');
+
+    
+
+Route::post('/inventory/add', [InventoryController::class, 'addItem'])->middleware('auth');
+Route::post('/inventory/remove', [InventoryController::class, 'removeItem'])->middleware('auth');
+
 
 
 

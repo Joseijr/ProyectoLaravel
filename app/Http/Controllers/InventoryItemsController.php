@@ -11,4 +11,6 @@ class InventoryItemsController extends Controller
         $items = InventoryItem::all();
         return view('index', compact('items'));
     }
+
+    
 }

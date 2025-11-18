@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('inventory_item_id')->constrained('inventory_items')->cascadeOnUpdate()->restrictOnDelete();
             $table->integer('quantity')->default(0);
+            $table->string('image_url')->nullable();
             $table->timestamps();
 
             $table->unique(['user_id', 'inventory_item_id']); // no duplicar filas del mismo ítem

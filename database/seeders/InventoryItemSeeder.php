@@ -20,28 +20,31 @@ class InventoryItemSeeder extends Seeder
 
         $items = [
             // SEMILLAS DEL JUEGO
-            ['category' => 'Seeds', 'name' => 'Helleborus niger Seed', 'price' => 45],
-            ['category' => 'Seeds', 'name' => 'Belladona Seed', 'price' => 60],
-            ['category' => 'Seeds', 'name' => 'Lavanda Seed', 'price' => 30],
-            ['category' => 'Seeds', 'name' => 'Mandrágora Seed', 'price' => 90],
-            ['category' => 'Seeds', 'name' => 'Albahaca Seed', 'price' => 25],
-            ['category' => 'Seeds', 'name' => 'Romero Seed', 'price' => 28],
-            ['category' => 'Seeds', 'name' => 'Ruta graveolens Seed', 'price' => 35],
-            ['category' => 'Seeds', 'name' => 'Diente de León Seed', 'price' => 10],
+            ['category' => 'Seeds', 'name' => 'Helleborus niger Seed', 'price' => 45 ,'image_url' => 'assets/helleborusSeed.png'],
+            ['category' => 'Seeds', 'name' => 'Belladona Seed', 'price' => 60,'image_url' => 'assets/belladonaseeds.png'],
+            ['category' => 'Seeds', 'name' => 'Lavanda Seed', 'price' => 30,'image_url' => 'assets/lavandaSeeds.png'],
+            ['category' => 'Seeds', 'name' => 'Mandrágora Seed', 'price' => 90,'image_url' => 'assets/mandragoraSeed.png'],
+            ['category' => 'Seeds', 'name' => 'Albahaca Seed', 'price' => 25,'image_url' => 'assets/albacaSeeds.png'],
+            ['category' => 'Seeds', 'name' => 'Romero Seed', 'price' => 28,'image_url' => 'assets/romeroseeds.png'],
+            ['category' => 'Seeds', 'name' => 'Ruta graveolens Seed', 'price' => 35,'image_url' => 'assets/rutaseeds.png'],
+            ['category' => 'Seeds', 'name' => 'Diente de León Seed', 'price' => 10,'image_url' => 'assets/leonseed.png'],
 
             // HERRAMIENTA
-            ['category' => 'Tools', 'name' => 'Pala', 'price' => 100],
+            ['category' => 'Tools', 'name' => 'Pala', 'price' => 100,'image_url' => 'assets/shovel.png'],
 
             // FERTILIZANTE
-            ['category' => 'Fertilizer', 'name' => 'Abono Básico', 'price' => 50],
+            ['category' => 'Fertilizer', 'name' => 'Abono Básico', 'price' => 50,'image_url' => 'assets/bolsaAbono.png'],
         ];
 
         foreach ($items as $item) {
-            InventoryItem::firstOrCreate([
-                'inventory_item_category_id' => $categories[$item['category']] ?? null,
-                'name' => $item['name'],
-                'price' => $item['price'],
-            ]);
+            InventoryItem::firstOrCreate(
+                ['name' => $item['name']],
+                [
+                    'inventory_item_category_id' => $categories[$item['category']] ?? null,
+                    'price' => $item['price'],
+                    'image_url' => $item['image_url'] ?? null,
+                ]
+            );
         }
     }
 }

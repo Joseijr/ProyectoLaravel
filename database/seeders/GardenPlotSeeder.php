@@ -20,7 +20,7 @@ class GardenPlotSeeder extends Seeder
         $users = User::all();
 
         if ($users->isEmpty()) {
-            $this->command->warn("⚠️ No hay usuarios registrados. Ejecuta primero el seeder de usuarios.");
+            $this->command->warn(" No hay usuarios registrados. Ejecuta primero el seeder de usuarios.");
             return;
         }
 

@@ -11,7 +11,8 @@ class UserInventory extends Model
     protected $fillable = [
         'user_id',
         'inventory_item_id',
-        'quantity'
+        'quantity',
+        'image_url',
     ];
 
     public function item()

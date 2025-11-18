@@ -1,5 +1,6 @@
-@layer sidebar{
-        /* Panel lateral del juego con iconos*/
+@layer sidebar {
+
+    /* Panel lateral del juego con iconos*/
     .game-sidebar {
         position: absolute;
         left: 0;
@@ -74,10 +75,10 @@
         right: -5px;
         background-color: var(--extra);
         color: white;
-        font-size: 10px;
+        font-size: var(text-l);
         font-weight: bold;
-        width: 18px;
-        height: 18px;
+        width: 25px;
+        height: 25px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -85,21 +86,24 @@
         border: 2px solid white;
     }
 
-  .coin-display {
-    position: relative;
-    width: 3.125rem;  /* 50px */
-    height: 3.125rem; /* 50px */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-}
+    .coin-display {
+        position: relative;
+        width: 3.125rem;
+        /* 50px */
+        height: 3.125rem;
+        /* 50px */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
 
     .coin-icon-img {
-        width: 2.625rem;   /* 42px */
-    height: 2.625rem;
-    object-fit: contain;
-    filter: drop-shadow(0 1px 1px rgba(0,0,0,.25));
+        width: 2.625rem;
+        /* 42px */
+        height: 2.625rem;
+        object-fit: contain;
+        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .25));
     }
 
 
@@ -124,12 +128,15 @@
         line-height: 1;
         pointer-events: none;
     }
-    
-    .tool-quantity.empty { background: #777; opacity: .8; }
+
+    .tool-quantity.empty {
+        background: #777;
+        opacity: .8;
+    }
 
     .market-item {
-        background: rgba(255,255,255,.08);
-        border: 1px solid rgba(255,255,255,.12);
+        background: rgba(255, 255, 255, .08);
+        border: 1px solid rgba(255, 255, 255, .12);
         border-radius: 10px;
         padding: .75rem;
         text-align: center;
@@ -137,5 +144,11 @@
         flex-direction: column;
         gap: .5rem;
     }
-    .market-img { width:64px; height:64px; object-fit:contain; margin:0 auto; }
+
+    .market-img {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        margin: 0 auto;
+    }
 }

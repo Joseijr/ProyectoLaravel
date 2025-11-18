@@ -55,7 +55,8 @@
         image_url: '{{ asset($i->item->image_url) }}'
       }@if(!$loop->last),@endif
     @endforeach
-  ]"
+  ]"  
+        :wallet="{{ $wallet->balance }}"
 
         :inventory-open="inventoryOpen"
         :seeds="seedsInventory"
@@ -79,37 +80,6 @@
         @plot-click="handlePlotClick"
       />
     </div>
-  <!-- <h2>Inventario</h2>
-
-<div class="inventory-dropdown">
-@forelse ($items as $item)
-    <div class="inventory-item">
-        <img src="{{ asset($item->item->image_url) }}"
-             alt="{{ $item->item->name }}"
-             class="seed-icon">
-
-        <span class="seed-quantity">{{ $item->quantity }}</span>
-    </div>
-@empty
-    <p class="empty-inventory">Tu inventario está vacío</p>
-@endforelse -->
-
-@foreach ($items as $item)
-    <p>
-        {{ $item->item->id }} : {{ $item->item->name }} : {{ $item->item->price }} : {{ $item->quantity }}
-    </p>
-<p>{{ $item->item->image_url }}</p>
- 
-@endforeach
-
-
-
-
- <!-- @foreach ($plants as $plant)
-        <p>{{ $plant->name }}: {{ $plant->price }}</p>
-       
-    @endforeach -->
-
 
 </div>
 

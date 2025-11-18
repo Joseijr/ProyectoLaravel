@@ -13,7 +13,7 @@ app.component('game-main', {
     cropsLeft: { type: Array, required: true },
     cropsRight: { type: Array, required: true },
     marketItems: { type: Array, required: true },
-    inven: { type: Array, required: true },
+    wallet: { type: Number, required: true },
   },
 
   methods: {
@@ -33,6 +33,13 @@ app.component('game-main', {
       if (crop.phase === 'start') return 'assets/startgrowing.png';
       if (crop.phase === 'almost') return 'assets/almostgrown.png';
       return null;
+    },
+    buyItem(item) {
+      console.log("Wallet:", this.wallet, "Item price:", item.price);
+      if (this.wallet >= item.price) {
+        console.log("Comprando item:", item);
+        this.$emit('buy-item', item);
+      }
     }
   },
 
@@ -46,7 +53,7 @@ app.component('game-main', {
           <!-- Monedas -->
           <div class="coin-display" title="Monedas">
             <img src="assets/coin.png" alt="Monedas" class="coin-icon-img">
-            <span class="tool-quantity">{{ coins }}</span>
+            <span class="tool-quantity">{{ wallet }}</span>
           </div>
 
           <button class="action-btn" title="Quitar planta" @click="handlePlant">
@@ -79,6 +86,7 @@ app.component('game-main', {
      <span class="seed-quantity">{{ seed.quantity }}</span>
 
   <img :src="seed.image_url" class="seed-icon">
+
 
 </div>
 
@@ -131,8 +139,8 @@ app.component('game-main', {
         <p class="white-color">Units: {{ item.quantity }}</p>
         <p class="white-color">Price: {{ item.price }} coins</p>
         <button class="market-buy-btn"
-                :disabled="coins < item.price"
-                @click="$emit('buy-item', item)">
+                :disabled="wallet <  item.price"
+                @click="buyItem(item)">
           Buy
         </button>
       </div>

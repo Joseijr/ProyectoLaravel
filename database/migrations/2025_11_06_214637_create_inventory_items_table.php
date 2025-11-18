@@ -18,6 +18,7 @@ return new class extends Migration
                   ->cascadeOnUpdate()->restrictOnDelete();
             $table->text('name');
             $table->integer('price')->nullable(); 
+             $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }

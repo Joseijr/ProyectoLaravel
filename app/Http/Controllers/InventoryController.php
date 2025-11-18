@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 class InventoryController extends Controller
 {
+
+    
     public function getUserInventory()
     {
         $userId = Auth::id();
@@ -17,4 +19,5 @@ class InventoryController extends Controller
 
         return response()->json($inventory);
     }
+    
 }
