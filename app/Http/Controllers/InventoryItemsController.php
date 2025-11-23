@@ -3,13 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\InventoryItem;
+use App\Models\InventoryItemCategory;
+use App\Models\Plant;
 
 class InventoryItemsController extends Controller
 {
-   public function index()
+   public function allItems()
     {
         $items = InventoryItem::all();
-        return view('index', compact('items'));
+      return $items; 
+    }
+
+    public function allCategories()
+    {
+        $categories = InventoryItemCategory::all();
+        return response()->json($categories);   
+    }
+    public function allPlants()
+    {
+        $plants = Plant::all();
+        return $plants;   
     }
 
     

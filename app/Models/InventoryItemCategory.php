@@ -10,5 +10,6 @@ class InventoryItemCategory extends Model
 
     protected $fillable = [
         'name'
+        
     ];
 }

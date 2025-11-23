@@ -59,6 +59,12 @@ const app = Vue.createApp({
     },
 
     methods: {
+
+        playSound() {
+            const sound = new Audio("assets/wiwiwi-original.mp3");
+            sound.currentTime = 0;
+            sound.play();
+        },
         //carga el idioma
         loadLanguage(lang) {
             //ruta del json "Carpeta lang +Idioma ingles por defecto+.json"

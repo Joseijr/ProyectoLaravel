@@ -3,7 +3,7 @@ app.component('login-form', {
     props: {
         t: { type: Object, required: true }
     },
-    
+
     methods: {
         handleLogin() {
             this.$emit('login-submit');
@@ -11,6 +11,7 @@ app.component('login-form', {
     },
     template: /*html*/`
     <main>
+    
         <section class="input-display login-back">
             <h1 class="white-color text-king my-xl">{{ t.login?.title }}</h1>
 

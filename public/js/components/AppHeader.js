@@ -24,9 +24,10 @@ app.component('app-header', {
         }
     },
     template: /*html*/`
+    <audio id="sonido" src="assets/wiwiwi-original.mp3"></audio>
     <header class="primary-bg">
         <div class="logo white-color text-xl">
-            <img src="assets/Logo.png" alt="Mushroom's Garden Logo">
+            <img src="assets/Logo.png" onclick="document.getElementById('sonido').play()" alt="Mushroom's Garden Logo">
             <p v-if="isLoggedIn">Bienvenido, <span class="extra-color">{{ userName }}</span></p>
 
 

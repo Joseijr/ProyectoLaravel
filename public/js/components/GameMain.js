@@ -70,7 +70,7 @@ app.component('game-main', {
           </button>
 
           <button class="action-btn" @click="handleToggleBook" title="Libro / Mercado">
-            <img src="assets/libroTemporal.jpg" alt="Libro" class="action-icon-img">
+            <img src="assets/libro.png" alt="Libro" class="action-icon-img">
           </button>
 
           <button class="action-btn" title="Inventario" @click="handleInventory" :class="{ 'active': inventoryOpen }">
