@@ -37,5 +37,20 @@ class LoginController extends Controller
             'user_id' => $user->id,
             'email' => $user->email
         ]);
+
+    
+
+    }
+     public function getUser(Request $request)
+    {
+        // Devuelve los datos del usuario logeado
+        return response()->json([
+            'success' => true,
+            'user' => [
+                'id' => $request->user()->id,
+                'name' => $request->user()->name,
+                'email' => $request->user()->email
+            ]
+        ]);
     }
 }

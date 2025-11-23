@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mission extends Model
 {
-    //
+    protected $fillable = [
+        mission_statuses_id,
+        title,
+        description,
+        reward,
+        
+    ];
 }

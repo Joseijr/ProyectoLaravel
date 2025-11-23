@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             PlantSeeder::class,
 
             MissionStatusSeeder::class,
+            MissionsTableSeeder::class,
             
         ]);
     }
