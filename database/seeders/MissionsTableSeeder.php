@@ -13,25 +13,17 @@ class MissionsTableSeeder extends Seeder
      */
     public function run(): void
     {
-       
-        $statusIds = DB::table('mission_statuses')->pluck('id')->toArray();
-        if (empty($statusIds)) {
-            $this->command->info('No hay estados de misión. Crea algunos primero.');
-            return;
-        }
-
         $plants = Plant::all();
         $missions = [];
 
         foreach ($plants as $plant) {
-            // Por ejemplo, vender entre 5 y 20 unidades de la planta
             $quantity = rand(5, 20);
 
             $missions[] = [
-                'mission_statuses_id' => $statusIds[array_rand($statusIds)],
+                'mission_statuses_id' => 1, 
                 'title' => "Vender {$quantity} unidades de {$plant->name}",
                 'description' => "Vende {$quantity} unidades de {$plant->name} para completar la misión.",
-                'reward' => $quantity * $plant->price, // recompensa proporcional al precio
+                'reward' => $quantity * $plant->price,
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
