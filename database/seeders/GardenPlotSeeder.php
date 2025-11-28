@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
-use App\Models\User;
 use App\Models\GardenPlot;
+use App\Models\PlantedCropStatus;
+use App\Models\User;
 
 class GardenPlotSeeder extends Seeder
 {
@@ -15,25 +15,18 @@ class GardenPlotSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        // Obtener todos los usuarios existentes
-        $users = User::all();
+        $statusLocked = PlantedCropStatus::where('status', 'Locked')->first();
 
-        if ($users->isEmpty()) {
-            $this->command->warn(" No hay usuarios registrados. Ejecuta primero el seeder de usuarios.");
-            return;
-        }
+        // Asumimos que quieres crear plots para un usuario específico
+        $user = User::find(11); // cambia al ID del usuario que necesites
 
-        foreach ($users as $user) {
-            // Crea una parcela básica por usuario
-            GardenPlot::firstOrCreate(
-                ['user_id' => $user->id],
-                [
-                    'status' => '1', // 0 - unlocked, 1 - locked
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]
-            );
+        if ($user && $statusLocked) {
+            for ($i = 1; $i <= 8; $i++) {
+                GardenPlot::firstOrCreate([
+                    'user_id' => $user->id,
+                    'planted_crop_status_id' => $statusLocked->id
+                ]);
+            }
         }
     }
 }

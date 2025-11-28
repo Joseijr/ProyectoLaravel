@@ -9,48 +9,30 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     public function apiLogin(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
 
-        $user = User::where('email', $request->email)->first();
+    $user = User::where('email', $request->email)->first();
 
-        if (!$user) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Email no encontrado'
-            ]);
-        }
-
-        if (!Hash::check($request->password, $user->password)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Contraseña incorrecta'
-            ]);
-        }
-
+    if (!$user || !Hash::check($request->password, $user->password)) {
         return response()->json([
-            'success' => true,
-            'message' => 'Login exitoso',
-            'user_id' => $user->id,
-            'email' => $user->email
-        ]);
-
-    
-
-    }
-     public function getUser(Request $request)
-    {
-        // Devuelve los datos del usuario logeado
-        return response()->json([
-            'success' => true,
-            'user' => [
-                'id' => $request->user()->id,
-                'name' => $request->user()->name,
-                'email' => $request->user()->email
-            ]
+            'success' => false,
+            'message' => 'Credenciales incorrectas'
         ]);
     }
+
+    // 👉 Generar token Sanctum
+    $token = $user->createToken('auth_token')->plainTextToken;
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Login exitoso',
+        'token' => $token,
+        'user' => $user
+    ]);
+}
+
 }

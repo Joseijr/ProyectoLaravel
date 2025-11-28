@@ -7,6 +7,9 @@ use App\Http\Controllers\InventoryItemsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MissionsController;
+use App\Http\Controllers\GameController;
+use App\Models\InventoryItem;
+use App\Models\UserInventory;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -27,3 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', [LoginController::class, 'getUse
 
 Route::get('/v1/game/data', [GameController::class, 'game']);
 
+//Actualizar inventario Sumando una unidad
+Route::put('/plants/{id}/sumar', [GameController::class, 'sumar']);
+//Actualizar inventario Restando una unidad
+Route::put('/plants/{id}/restar', [GameController::class, 'restar']);

@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('garden_plots', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->char('status', 1)->nullable();
-            $table->timestamps();
-        });
+       Schema::create('garden_plots', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
+    $table->char('status', 1)->default('0'); // '0'=Blocked, '1'=Active, '2'=Planted
+    $table->timestamps();
+});
+
+
     }
 
     /**

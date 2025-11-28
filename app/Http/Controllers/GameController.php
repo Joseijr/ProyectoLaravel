@@ -21,4 +21,45 @@ public function game()
     return view('game', compact('plants', 'items', 'wallet'));
 }
 
+public function sumar($id)
+{
+    $userId = 11; // usuario fijo de prueba
+
+    $record = UserInventory::where('user_id', $userId)
+                           ->where('inventory_item_id', $id)
+                           ->first();
+
+    if (!$record) {
+        return response()->json(['error' => 'Registro no encontrado'], 404);
+    }
+
+    $record->quantity = ($record->quantity ?? 0) + 1;
+    $record->save();
+
+    return response()->json([
+        'success' => true,
+        'quantity' => $record->quantity
+    ]);
+}
+public function restar($id)
+{
+    $userId = 11; // usuario fijo de prueba
+
+    $record = UserInventory::where('user_id', $userId)
+                           ->where('inventory_item_id', $id)
+                           ->first();
+
+    if (!$record) {
+        return response()->json(['error' => 'Registro no encontrado'], 404);
+    }
+
+    $record->quantity = max(0, ($record->quantity ?? 0) - 1);
+    $record->save();
+
+    return response()->json([
+        'success' => true,
+        'quantity' => $record->quantity
+    ]); 
+
+}
 }
