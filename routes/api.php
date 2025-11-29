@@ -30,7 +30,9 @@ Route::middleware('auth:sanctum')->get('/user', [LoginController::class, 'getUse
 
 Route::get('/v1/game/data', [GameController::class, 'game']);
 
+
 //Actualizar inventario Sumando una unidad
-Route::put('/plants/{id}/sumar', [GameController::class, 'sumar']);
+Route::put('/plants/{id}/{price}/sumar', [GameController::class, 'sumar']);
+
 //Actualizar inventario Restando una unidad
 Route::put('/plants/{id}/restar', [GameController::class, 'restar']);

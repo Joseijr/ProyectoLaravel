@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\InventoryItem;
 use App\Models\InventoryItemCategory;
 use App\Models\Plant;
+use App\Models\userInventory;
 
 class InventoryItemsController extends Controller
 {
@@ -21,6 +22,11 @@ class InventoryItemsController extends Controller
         return response()->json($categories);   
     }
     public function allPlants()
+    {
+        $plants = Plant::all();
+        return $plants;   
+    }
+    public function allInventory()
     {
         $plants = Plant::all();
         return $plants;   
