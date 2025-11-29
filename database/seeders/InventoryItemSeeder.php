@@ -29,11 +29,10 @@ class InventoryItemSeeder extends Seeder
             ['category' => 'Seeds', 'name' => 'Ruta graveolens Seed', 'price' => 35,'image_url' => 'assets/rutaseeds.png'],
             ['category' => 'Seeds', 'name' => 'Diente de León Seed', 'price' => 10,'image_url' => 'assets/leonseed.png'],
 
-            // HERRAMIENTA
+            // HERRAMIENTAS Y ABONOS
             ['category' => 'Tools', 'name' => 'Pala', 'price' => 100,'image_url' => 'assets/shovel.png'],
-
-            // FERTILIZANTE
             ['category' => 'Fertilizer', 'name' => 'Abono Básico', 'price' => 50,'image_url' => 'assets/bolsaAbono.png'],
+            ['category' => 'Tools', 'name' => 'Regadera', 'price' => 100,'image_url' => 'assets/regar.png'],
         ];
 
         foreach ($items as $item) {

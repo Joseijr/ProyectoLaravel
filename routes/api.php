@@ -17,7 +17,7 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/v1/garden/categories',[InventoryItemsController::class,'allCategories']);
 Route::get('/v1/garden/plants',[InventoryItemsController::class,'allItems']);
-Route::get('/v1/garden/inventory',[InventoryItemsController::class,'allItems']);
+//Route::get('/v1/garden/inventory',[InventoryItemsController::class,'allItems']);
 Route::get('/v1/missions',[MissionsController::class,'allMissions']);
 
 Route::post('/register', [RegisterController::class, 'apiStore']);

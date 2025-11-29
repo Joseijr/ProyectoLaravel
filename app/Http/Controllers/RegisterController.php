@@ -63,6 +63,7 @@ return redirect('/');
     // Items
     UserInventory::create(['user_id' => $user->id, 'inventory_item_id' => 9, 'quantity' => 0]);
     UserInventory::create(['user_id' => $user->id, 'inventory_item_id' => 10, 'quantity' => 5]);
+    UserInventory::create(['user_id' => $user->id, 'inventory_item_id' => 11, 'quantity' => 5]);
 
     // Wallet inicial
     Wallet::create([
