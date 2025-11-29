@@ -21,8 +21,8 @@ class MissionsTableSeeder extends Seeder
 
             $missions[] = [
                 'mission_statuses_id' => 1, 
-                'title' => "Vender {$quantity} unidades de {$plant->name}",
-                'description' => "Vende {$quantity} unidades de {$plant->name} para completar la misión.",
+                'title' => "Sell {$plant->name}",
+                'description' => "Sell {$quantity} units of {$plant->name} to complete the mission.",
                 'reward' => $quantity * $plant->price,
                 'created_at' => now(),
                 'updated_at' => now(),

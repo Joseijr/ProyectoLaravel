@@ -12,4 +12,5 @@ class MissionsController extends Controller
         $missions = Mission::all();
       return $missions; 
     }
+    
 }
