@@ -24,9 +24,6 @@ Route::post('/register', [RegisterController::class, 'apiStore']);
 
 Route::post('/login', [LoginController::class, 'apiLogin']);
 
-Route::middleware('auth:sanctum')->get('/user', [LoginController::class, 'getUser']);
-
-
 
 Route::get('/v1/game/data', [GameController::class, 'game']);
 

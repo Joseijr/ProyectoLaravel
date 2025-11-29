@@ -24,7 +24,7 @@ class LoginController extends Controller
         ]);
     }
 
-    // 👉 Generar token Sanctum
+
     $token = $user->createToken('auth_token')->plainTextToken;
 
     return response()->json([
