@@ -71,13 +71,15 @@ return redirect('/');
         'balance' => 50,
     ]);
 
-    // Plots iniciales
-   for ($i = 0; $i < 8; $i++) {
-        GardenPlot::create([
-            'user_id' => $user->id,
-            'status'  => $i === 0 ? '1' : '0'
-        ]);
-    }
+   // Plots iniciales (8 parcelas: 4 left, 4 right)
+for ($i = 0; $i < 8; $i++) {
+    GardenPlot::create([
+        'user_id' => $user->id,
+        'side' => $i < 4 ? 'left' : 'right',
+        'plot_index' => $i < 4 ? $i : $i - 4,
+        'status' => ($i === 0 ? '1' : '0') // todas bloqueadas al inicio
+    ]);
+}
     return response()->json([
         'success' => true,
         'message' => 'Usuario creado correctamente'

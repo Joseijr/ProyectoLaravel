@@ -9,8 +9,10 @@ class GardenPlot extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
+   protected $fillable = [
+        'user_id', 
+        'side',
+        'plot_index',
         'status', // 0=Blocked, 1=Active, 2=Planted
     ];
 

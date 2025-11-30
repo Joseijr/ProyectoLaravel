@@ -122,6 +122,19 @@ public function buyPlot(Request $request)
     $wallet->balance -= $request->price;
     $wallet->save();
 
+    $plot = GardenPlot::where('user_id', $user->id)
+                      ->where('plot_index', $request->index)
+                      ->where('side', $request->side)
+                      ->first();
+
+    if (!$plot) {
+        return response()->json(['error' => 'Plot not found'], 404);
+    }
+
+    // ACTUALIZAR ESTADO
+    $plot->status = 1;
+    $plot->save();
+
     // Registrar compra
     WalletTransaction::create([
         'wallet_id' => $wallet->id,
