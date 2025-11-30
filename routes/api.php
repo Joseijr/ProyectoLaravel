@@ -10,6 +10,7 @@ use App\Http\Controllers\MissionsController;
 use App\Http\Controllers\GameController;
 use App\Models\InventoryItem;
 use App\Models\UserInventory;
+use App\Http\Controllers\InventoryController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return response()->json([
@@ -17,10 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         'user' => $request->user()
     ]);
 });
-
-Route::get('/v1/garden/categories',[InventoryItemsController::class,'allCategories']);
-Route::get('/v1/garden/plants',[InventoryItemsController::class,'allItems']);
-//Route::get('/v1/garden/inventory',[InventoryItemsController::class,'allItems']);
+// Catálogo general
+Route::get('/v1/garden/categories', [InventoryItemsController::class, 'allCategories']);
+Route::get('/v1/garden/plants', [InventoryItemsController::class, 'allPlants']);
+Route::get('/v1/garden/items', [InventoryItemsController::class, 'allItems']);
 Route::get('/v1/missions',[MissionsController::class,'allMissions']);
 
 Route::post('/register', [RegisterController::class, 'apiStore']);
@@ -42,4 +43,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/plants/{id}/{price}/sumar', [GameController::class, 'sumar']);
     Route::put('/plants/{id}/restar', [GameController::class, 'restar']);
     Route::put('/plots/buy', [GameController::class, 'buyPlot']);
+    Route::get('/v1/garden/inventory', [InventoryController::class, 'getUserInventory']);
 });

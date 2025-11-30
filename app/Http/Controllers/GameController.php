@@ -36,64 +36,61 @@ public function game(Request $request)
 
 
 public function sumar(Request $request, $id, $price)
-{
-    $userId = $request ->user()->id;
+    {
+        $userId = $request->user()->id;  // ← USUARIO REAL
 
-    // Obtener el registro de inventario
-    $record = UserInventory::where('user_id', $userId)
-                           ->where('inventory_item_id', $id)
-                           ->first();
+        $record = UserInventory::where('user_id', $userId)
+            ->where('inventory_item_id', $id)
+            ->first();
 
+        if (!$record) {
+            return response()->json(['error' => 'No existe ese item en inventario'], 404);
+        }
 
-    // Incrementar cantidad
-    $record->quantity = ($record->quantity ?? 0) + 1;
-    $record->save();
+        // Incrementar
+        $record->quantity++;
+        $record->save();
 
-    // Obtener wallet
-    $wallet = Wallet::where('user_id', $userId)->first();
-
-        // Restar el precio
+        // Wallet
+        $wallet = Wallet::where('user_id', $userId)->first();
         $wallet->balance -= $price;
         $wallet->save();
 
-        // Aqui deberia crear una transacción pero no funciona
-       WalletTransaction::create([
-    'wallet_id' => $wallet->id,
-    'transaction_types_id' => 2,
-    'amount' => $price,
-    'event' => 'comprar: Item ID ' . $id
-]);
+        // Transacción
+        WalletTransaction::create([
+            'wallet_id' => $wallet->id,
+            'transaction_types_id' => 2,
+            'amount' => $price,
+            'event' => 'Comprar: Item ID ' . $id
+        ]);
 
-    
-
-    return response()->json([
-        'success' => true,
-        'quantity' => $record->quantity,
-        'wallet_balance' => $wallet ? $wallet->balance : 0
-    ]);
-}
-
-public function restar(Request $request, $id)
-{
-    $userId = $request ->user()->id;
-
-    $record = UserInventory::where('user_id', $userId)
-                           ->where('inventory_item_id', $id)
-                           ->first();
-
-    if (!$record) {
-        return response()->json(['error' => 'Registro no encontrado'], 404);
+        return response()->json([
+            'success' => true,
+            'quantity' => $record->quantity,
+            'wallet_balance' => $wallet->balance
+        ]);
     }
 
-    $record->quantity = max(0, ($record->quantity ?? 0) - 1);
-    $record->save();
+public function restar(Request $request, $id)
+    {
+        $userId = $request->user()->id;  // ← USUARIO REAL
 
-    return response()->json([
-        'success' => true,
-        'quantity' => $record->quantity
-    ]); 
+        $record = UserInventory::where('user_id', $userId)
+            ->where('inventory_item_id', $id)
+            ->first();
 
-}
+        if (!$record) {
+            return response()->json(['error' => 'Registro no encontrado'], 404);
+        }
+
+        $record->quantity = max(0, $record->quantity - 1);
+        $record->save();
+
+        return response()->json([
+            'success' => true,
+            'quantity' => $record->quantity
+        ]);
+    }
 
 //PARCELAS AAAAAAAAAA
 public function buyPlot(Request $request)
