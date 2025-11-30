@@ -11,9 +11,12 @@ use App\Http\Controllers\GameController;
 use App\Models\InventoryItem;
 use App\Models\UserInventory;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return response()->json([
+        'success' => true,
+        'user' => $request->user()
+    ]);
+});
 
 Route::get('/v1/garden/categories',[InventoryItemsController::class,'allCategories']);
 Route::get('/v1/garden/plants',[InventoryItemsController::class,'allItems']);
@@ -25,11 +28,18 @@ Route::post('/register', [RegisterController::class, 'apiStore']);
 Route::post('/login', [LoginController::class, 'apiLogin']);
 
 
-Route::get('/v1/game/data', [GameController::class, 'game']);
+// Route::get('/v1/game/data', [GameController::class, 'game']);
 
 
-//Actualizar inventario Sumando una unidad
-Route::put('/plants/{id}/{price}/sumar', [GameController::class, 'sumar']);
+// //Actualizar inventario Sumando una unidad
+// Route::put('/plants/{id}/{price}/sumar', [GameController::class, 'sumar']);
 
-//Actualizar inventario Restando una unidad
-Route::put('/plants/{id}/restar', [GameController::class, 'restar']);
+// //Actualizar inventario Restando una unidad
+// Route::put('/plants/{id}/restar', [GameController::class, 'restar']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/v1/game/data', [GameController::class, 'game']);
+    Route::put('/plants/{id}/{price}/sumar', [GameController::class, 'sumar']);
+    Route::put('/plants/{id}/restar', [GameController::class, 'restar']);
+    Route::put('/plots/buy', [GameController::class, 'buyPlot']);
+});

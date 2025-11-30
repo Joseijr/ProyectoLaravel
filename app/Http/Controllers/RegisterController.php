@@ -82,6 +82,7 @@ return redirect('/');
         'success' => true,
         'message' => 'Usuario creado correctamente'
     ]);
+
 }
 }
 

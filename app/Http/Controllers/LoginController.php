@@ -33,6 +33,14 @@ class LoginController extends Controller
         'token' => $token,
         'user' => $user
     ]);
+    
 }
-
+//Funcion Logout
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+        return response()->json([
+            'message' => 'La sesión ha sido cerrada exitosamente.'
+        ]);
+    }
 }
