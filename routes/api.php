@@ -44,4 +44,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/plants/{id}/restar', [GameController::class, 'restar']);
     Route::put('/plots/buy', [GameController::class, 'buyPlot']);
     Route::get('/v1/garden/inventory', [InventoryController::class, 'getUserInventory']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+
 });
